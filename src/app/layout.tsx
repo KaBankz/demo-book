@@ -14,7 +14,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+      <body className="h-screen w-screen bg-[radial-gradient(#5a47ce,#232323_80%)]">
+        {children}
+      </body>
     </html>
   );
 }
