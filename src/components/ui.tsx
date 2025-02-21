@@ -80,63 +80,6 @@ export const UI = () => {
           </div>
         </div>
       </main>
-
-      <div className="fixed inset-0 flex -rotate-2 select-none items-center">
-        <div className="relative">
-          <div className="animate-horizontal-scroll flex w-max items-center gap-8 bg-white/0 px-8">
-            <h1 className="text-10xl shrink-0 font-black text-white">
-              Wawa Sensei
-            </h1>
-            <h2 className="shrink-0 text-8xl font-light italic text-white">
-              React Three Fiber
-            </h2>
-            <h2 className="text-12xl shrink-0 font-bold text-white">
-              Three.js
-            </h2>
-            <h2 className="text-12xl outline-text shrink-0 font-bold italic text-transparent">
-              Ultimate Guide
-            </h2>
-            <h2 className="shrink-0 text-9xl font-medium text-white">
-              Tutorials
-            </h2>
-            <h2 className="shrink-0 text-9xl font-extralight italic text-white">
-              Learn
-            </h2>
-            <h2 className="text-13xl shrink-0 font-bold text-white">
-              Practice
-            </h2>
-            <h2 className="text-13xl outline-text shrink-0 font-bold italic text-transparent">
-              Creative
-            </h2>
-          </div>
-          <div className="animate-horizontal-scroll-2 absolute left-0 top-0 flex w-max items-center gap-8 bg-white/0 px-8">
-            <h1 className="text-10xl shrink-0 font-black text-white">
-              Wawa Sensei
-            </h1>
-            <h2 className="shrink-0 text-8xl font-light italic text-white">
-              React Three Fiber
-            </h2>
-            <h2 className="text-12xl shrink-0 font-bold text-white">
-              Three.js
-            </h2>
-            <h2 className="text-12xl outline-text shrink-0 font-bold italic text-transparent">
-              Ultimate Guide
-            </h2>
-            <h2 className="shrink-0 text-9xl font-medium text-white">
-              Tutorials
-            </h2>
-            <h2 className="shrink-0 text-9xl font-extralight italic text-white">
-              Learn
-            </h2>
-            <h2 className="text-13xl shrink-0 font-bold text-white">
-              Practice
-            </h2>
-            <h2 className="text-13xl outline-text shrink-0 font-bold italic text-transparent">
-              Creative
-            </h2>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
