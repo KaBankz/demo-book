@@ -1,19 +1,12 @@
 "use client";
 
-import { Environment, Float, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Book } from "@/components/book";
 
 export const Experience = () => {
   return (
     <>
-      <Float
-        rotation-x={-Math.PI / 4}
-        floatIntensity={1}
-        speed={2}
-        rotationIntensity={2}
-      >
-        <Book />
-      </Float>
+      <Book />
       <OrbitControls />
       <Environment preset="studio"></Environment>
       <directionalLight
