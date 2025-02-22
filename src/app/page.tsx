@@ -1,29 +1,28 @@
 "use client";
 
-import { Loader } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { Experience } from "@/components/experience";
-import { UI } from "@/components/ui";
+import { useChat } from "@ai-sdk/react";
 
 export default function HomePage() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+
   return (
-    <>
-      <UI />
-      <Loader />
-      <Canvas
-        shadows
-        camera={{
-          position: [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
-          fov: 45,
-        }}
+    <div className="flex flex-col gap-4 text-white">
+      <div className="flex flex-col gap-2">
+        {messages.map((message) => (
+          <div key={message.id}>{message.content}</div>
+        ))}
+      </div>
+      <input
+        className="rounded-md border-2 border-white p-2 text-black"
+        value={input}
+        onChange={handleInputChange}
+      />
+      <button
+        className="rounded-md border-2 border-white p-2 text-white"
+        onClick={handleSubmit}
       >
-        <group position-y={0}>
-          <Suspense fallback={null}>
-            <Experience />
-          </Suspense>
-        </group>
-      </Canvas>
-    </>
+        Send
+      </button>
+    </div>
   );
 }
