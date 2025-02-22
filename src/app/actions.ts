@@ -11,6 +11,7 @@ import { z } from "zod";
 
 const storyModel = openai("gpt-4o");
 const imageModel = openai.image("dall-e-3");
+const imageSeed = Math.floor(Math.random() * 1000000);
 
 const storySchema = z.object({
   title: z.string(),
@@ -48,6 +49,7 @@ async function generateStoryImage(imagePrompt: string) {
     model: imageModel,
     prompt: `Create a child-friendly illustration for a children's picture book. The style should be colorful, whimsical, and appealing to young children. ${imagePrompt}`,
     size: "1024x1024",
+    seed: imageSeed,
   });
 
   return image.base64;
