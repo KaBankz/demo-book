@@ -5,6 +5,8 @@ import {
   experimental_generateImage as generateImage,
 } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { speak } from "orate";
+import { openai as orateOpenai } from "orate/openai";
 import { z } from "zod";
 
 const storyModel = openai("gpt-4o");
@@ -51,15 +53,32 @@ async function generateStoryImage(imagePrompt: string) {
   return image.base64;
 }
 
+async function generateStoryAudio(text: string) {
+  const audio = await speak({
+    model: orateOpenai.tts("tts-1", "nova"),
+    prompt: text,
+  });
+
+  // Convert ArrayBuffer to base64
+  const audioArray = new Uint8Array(await audio.arrayBuffer());
+  const base64Audio = btoa(
+    audioArray.reduce((data, byte) => data + String.fromCharCode(byte), ""),
+  );
+
+  return `data:audio/mpeg;base64,${base64Audio}`;
+}
+
 export async function generateStory(prompt: string) {
   const storyData = await generateStoryText(prompt);
   const storyWithImages = await Promise.all(
     storyData.pages.map(async (page) => {
       const imageBase64 = await generateStoryImage(page.imagePrompt);
+      const audio = await generateStoryAudio(page.text);
       return {
         pageNumber: page.pageNumber,
         text: page.text,
         image: `data:image/png;base64,${imageBase64}`,
+        audio: audio,
       };
     }),
   );

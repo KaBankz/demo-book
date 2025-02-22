@@ -12,6 +12,7 @@ const storySchema = z.object({
         pageNumber: z.number(),
         text: z.string(),
         image: z.string(),
+        audio: z.string(),
       }),
     )
     .length(5),
@@ -100,10 +101,20 @@ export default function StoryGenerator() {
                   key={page.pageNumber}
                   className="overflow-hidden rounded-xl border bg-white p-6 shadow-lg transition hover:shadow-xl"
                 >
-                  <h3 className="mb-4 text-2xl font-bold text-purple-800">
-                    Page {page.pageNumber}
-                  </h3>
-                  <p className="mb-4 leading-relaxed text-gray-700">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-bold text-purple-800">
+                      Page {page.pageNumber}
+                    </h3>
+                    <audio
+                      controls
+                      className="h-8"
+                      onError={(e) => console.error("Audio playback error:", e)}
+                    >
+                      <source src={page.audio} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                  <p className="my-4 leading-relaxed text-gray-700">
                     {page.text}
                   </p>
                   <div className="aspect-w-16 aspect-h-9">
